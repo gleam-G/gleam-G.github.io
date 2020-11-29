@@ -550,7 +550,7 @@
 <p>每种排序算法都有各自的优缺点，适合在不同的环境下使用，就其全面性能而言，很难提出一种被认为是最好的算法。<strong>通常可以将排序算法分为插入排序、交换排序、选择排序、归并排序和基数排序五大类</strong>，内部排序算法的性能取决于算法的时间复杂度和空间复杂度，而时间复杂度一般是由比较和移动的次数决定的。</p>
 <p><img src="https://oss.gleaming.cn/Blog/Sort/Sorting-overview.png" class="lazyload" data-srcset="https://oss.gleaming.cn/Blog/Sort/Sorting-overview.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
 <h2 id="一、冒泡排序-Bubble-Sort"><a href="#一、冒泡排序-Bubble-Sort" class="headerlink" title="一、冒泡排序 (Bubble Sort)"></a>一、<strong>冒泡排序 (Bubble Sort)</strong></h2><h3 id="1-原理"><a href="#1-原理" class="headerlink" title="1.原理"></a>1.原理</h3><p>每次检查相邻的两个元素，如果前面的元素与后面的元素满足给定的排序条件，就将相邻两个元素交换。当没有相邻元素需要交换时，排序就完成了。</p>
-<p>经过 $ i$ 次扫面后，数列的末尾$i$项必然是最大的 $i$ 项，因此冒泡排序最多需要扫描 $n-1$ 遍数组就能完成扫描。</p>
+<p>经过$i$次扫面后，数列的末尾$i$项必然是最大的$i$项，因此冒泡排序最多需要扫描$n-1$遍数组就能完成扫描。</p>
 <h3 id="2-步骤"><a href="#2-步骤" class="headerlink" title="2.步骤"></a>2.步骤</h3><ul>
 <li><strong>①</strong> 比较相邻的元素。如果第一个比第二个大，就交换它们两个；</li>
 <li><strong>②</strong> 对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对，这样在最后的元素应该会是最大的数；</li>
@@ -559,10 +559,10 @@
 <h3 id="3-动画演示"><a href="#3-动画演示" class="headerlink" title="3.动画演示"></a>3.动画演示</h3><p><img src="https://oss.gleaming.cn/Blog/Sort/Bubble-sort.gif" class="lazyload" data-srcset="https://oss.gleaming.cn/Blog/Sort/Bubble-sort.gif" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="Bubble-sort"></p>
 <h3 id="4-性能分析"><a href="#4-性能分析" class="headerlink" title="4.性能分析"></a>4.性能分析</h3><blockquote>
 <ul>
-<li>平均时间复杂度：$N^2$</li>
-<li>最佳时间复杂度：O($N$)</li>
-<li>最差时间复杂度：O($N^2$)</li>
-<li>空间复杂度：O(1)</li>
+<li>平均时间复杂度：$\mathrm O(\mathrm N^2)$</li>
+<li>最佳时间复杂度：$\mathrm O(\mathrm N)$</li>
+<li>最差时间复杂度：$\mathrm O(\mathrm N^2)$</li>
+<li>空间复杂度：$\mathrm O(\mathrm 1)$</li>
 <li>排序方式：In-place</li>
 <li>稳定性：稳定</li>
 </ul>
@@ -697,7 +697,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-11-29T22:06:07+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-11-29T22:12:36+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Nov 29, 2020</p>
@@ -800,6 +800,59 @@
 
 
 
+
+
+  <script>
+  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.0/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    // 文章章节标题不能为 “MathJax” ，否则会报错。
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
 
 
 
