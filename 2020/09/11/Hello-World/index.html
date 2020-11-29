@@ -72,9 +72,7 @@
   !function(c){"use strict";var e=function(e,t,n,r){var o,i=c.document,a=i.createElement("link");if(t)o=t;else{var d=(i.body||i.getElementsByTagName("head")[0]).childNodes;o=d[d.length-1]}var f=i.styleSheets;if(r)for(var l in r)r.hasOwnProperty(l)&&a.setAttribute(l,r[l]);a.rel="stylesheet",a.href=e,a.media="only x",function e(t){if(i.body)return t();setTimeout(function(){e(t)})}(function(){o.parentNode.insertBefore(a,t?o:o.nextSibling)});var s=function(e){for(var t=a.href,n=f.length;n--;)if(f[n].href===t)return e();setTimeout(function(){s(e)})};function u(){a.addEventListener&&a.removeEventListener("load",u),a.media=n||"all"}return a.addEventListener&&a.addEventListener("load",u),(a.onloadcssdefined=s)(u),a};"undefined"!=typeof exports?exports.loadCSS=e:c.loadCSS=e}("undefined"!=typeof global?global:this);
   </script>
   <script id="loadcss"></script>
-<!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-<!-- hexo injector head_end end --></head>
+</head>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" rel="stylesheet">
 <body>
   <header class="l_header auto shadow blur " style='opacity: 0' >
@@ -659,10 +657,9 @@
       
         <a class='prev' href='/2020/09/12/Java-learning-route/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Java学习路线</p>
-          <p class='content'>大二下学期的课程基本结束了，由于种种原因，思考过后决定不考研了，所以就准备大学毕业找工作，以前也学习过Java，但总感觉一头雾水，没有明确的目标，所以就简单整理Java的学习路线。
-
-
-路线阶段...</p>
+          <p class='content'>路线阶段一Java基础，常用类、集合、IO，GUI编程，网络编程，多线程基础，注解和反射，JVM入门。
+阶段二前端基础，HTML，CSS，JavaScript，jQuery。
+阶段三MySQL数...</p>
         </a>
       
       

@@ -23,7 +23,7 @@
   
 
   
-    <meta name="description" content="快速幂，二进制取幂（Binary Exponentiation，也称平方法），是一个$\theta$($logn$)的时间内计算$x^{n}$的小技巧，而暴力的计算需要$\theta$($n$)的时间。而这个技巧也常 常用在非计算的场景，因为它可以应用在任何具有结合律的运算中。">
+    <meta name="description" content="快速幂，二进制取幂（Binary Exponentiation)，也称平方法.">
   
 
   <!-- feed -->
@@ -76,9 +76,7 @@
   !function(c){"use strict";var e=function(e,t,n,r){var o,i=c.document,a=i.createElement("link");if(t)o=t;else{var d=(i.body||i.getElementsByTagName("head")[0]).childNodes;o=d[d.length-1]}var f=i.styleSheets;if(r)for(var l in r)r.hasOwnProperty(l)&&a.setAttribute(l,r[l]);a.rel="stylesheet",a.href=e,a.media="only x",function e(t){if(i.body)return t();setTimeout(function(){e(t)})}(function(){o.parentNode.insertBefore(a,t?o:o.nextSibling)});var s=function(e){for(var t=a.href,n=f.length;n--;)if(f[n].href===t)return e();setTimeout(function(){s(e)})};function u(){a.addEventListener&&a.removeEventListener("load",u),a.media=n||"all"}return a.addEventListener&&a.addEventListener("load",u),(a.onloadcssdefined=s)(u),a};"undefined"!=typeof exports?exports.loadCSS=e:c.loadCSS=e}("undefined"!=typeof global?global:this);
   </script>
   <script id="loadcss"></script>
-<!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-<!-- hexo injector head_end end --></head>
+</head>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" rel="stylesheet">
 <body>
   <header class="l_header auto shadow blur " style='opacity: 0' >
@@ -509,7 +507,7 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>718 words</p>
+      <p>710 words</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
@@ -542,10 +540,7 @@
 
 
   
-  <p>快速幂，二进制取幂（Binary Exponentiation，也称平方法），是一个$\theta$($logn$)的时间内计算$x^{n}$的小技巧，而暴力的计算需要$\theta$($n$)的时间。而这个技巧也常 常用在非计算的场景，因为它可以应用在任何具有结合律的运算中。</p>
-<a id="more"></a>
-
-<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>计算$\alpha$的n次方就是将n个$\alpha$乘在一起，然而当$\alpha$，n太大的时候，这种方法就不太实用。不过我们知道$a^{b+c}=a^b<em>a^c$,$a^{2b}=a^b</em>a^b$.二进制取幂的想法是，我们将取幂的任务按照指数的<strong>二进制表示</strong>来分割成更小的任务。</p>
+  <h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>快速幂是一个$\theta$($logn$)的时间内计算$x^{n}$的小技巧，而暴力的计算需要$\theta$($n$)的时间。而这个技巧也常常用在非计算的场景，因为它可以应用在任何具有结合律的运算中。计算$\alpha$的n次方就是将n个$\alpha$乘在一起，然而当$\alpha$，n太大的时候，这种方法就不太实用。不过我们知道$a^{b+c}=a^b\ast a^c$,$a^{2b}=a^b\ast a^b$.二进制取幂的想法是，我们将取幂的任务按照指数的<strong>二进制表示</strong>来分割成更小的任务。</p>
 <p>举个例子$3^{13}=3^{(1101)_2}=3^8\ast3^4\ast3^1$.</p>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="递归算法"><a href="#递归算法" class="headerlink" title="递归算法"></a>递归算法</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">binpow</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a, <span class="keyword">long</span> <span class="keyword">long</span> b)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (b == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">long</span> <span class="keyword">long</span> res = binpow(a, b / <span class="number">2</span>);</span><br><span class="line">  <span class="keyword">if</span> (b % <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> res * res * a;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> res * res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -600,7 +595,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-11-28T16:16:45+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-11-28T16:45:29+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Nov 28, 2020</p>
@@ -625,7 +620,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gleaming.cn/2020/09/26/Fast-Power/&title=快速幂 - 小管的blog&summary=快速幂，二进制取幂（Binary Exponentiation，也称平方法），是一个$\theta$($logn$)的时间内计算$x^{n}$的小技巧，而暴力的计算需要$\theta$($n$)的时间。而这个技巧也常 常用在非计算的场景，因为它可以应用在任何具有结合律的运算中。"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gleaming.cn/2020/09/26/Fast-Power/&title=快速幂 - 小管的blog&summary="
           
           >
           
@@ -637,7 +632,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gleaming.cn/2020/09/26/Fast-Power/&title=快速幂 - 小管的blog&summary=快速幂，二进制取幂（Binary Exponentiation，也称平方法），是一个$\theta$($logn$)的时间内计算$x^{n}$的小技巧，而暴力的计算需要$\theta$($n$)的时间。而这个技巧也常 常用在非计算的场景，因为它可以应用在任何具有结合律的运算中。"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gleaming.cn/2020/09/26/Fast-Power/&title=快速幂 - 小管的blog&summary="
           
           >
           
@@ -649,7 +644,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gleaming.cn/2020/09/26/Fast-Power/&title=快速幂 - 小管的blog&summary=快速幂，二进制取幂（Binary Exponentiation，也称平方法），是一个$\theta$($logn$)的时间内计算$x^{n}$的小技巧，而暴力的计算需要$\theta$($n$)的时间。而这个技巧也常 常用在非计算的场景，因为它可以应用在任何具有结合律的运算中。"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gleaming.cn/2020/09/26/Fast-Power/&title=快速幂 - 小管的blog&summary="
           
           >
           
@@ -679,13 +674,19 @@
   
     <div class="prev-next">
       
+        <a class='prev' href='/2020/11/28/Ten%20classic%20sorting%20algorithms/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Java实现十大经典排序算法</p>
+          <p class='content'>排序算法分类
+内部排序：指在排序期间，元素全部存放在内存中的排序，常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。
+外部排序：指在排序期间，...</p>
+        </a>
+      
       
         <a class='next' href='/2020/09/12/Java-learning-route/'>
           <p class='title'>Java学习路线<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>大二下学期的课程基本结束了，由于种种原因，思考过后决定不考研了，所以就准备大学毕业找工作，以前也学习过Java，但总感觉一头雾水，没有明确的目标，所以就简单整理Java的学习路线。
-
-
-路线阶段...</p>
+          <p class='content'>路线阶段一Java基础，常用类、集合、IO，GUI编程，网络编程，多线程基础，注解和反射，JVM入门。
+阶段二前端基础，HTML，CSS，JavaScript，jQuery。
+阶段三MySQL数...</p>
         </a>
       
     </div>
