@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -19,9 +17,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>Tag: Java - 小管的blog</title>
+  <title>操作系统复习 - 小管的blog</title>
+  
+    <meta name="keywords" content="OS">
   
 
+  
+    <meta name="description" content="日常复习">
   
 
   <!-- feed -->
@@ -329,7 +331,7 @@
   
     
     
-        <div class='cover-wrapper  dock' style="display: none;">
+        <div class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-backstretch'></div>
           
@@ -402,8 +404,8 @@
  
  
 <div id="pjax-data" style="display: none"> 
-  <div id="pjax-ispage">false</div> 
-  <div id="pjax-pageTitle"></div> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">操作系统复习</div> 
   <div id="pjax-enable-cover">true</div> 
   <div id="pjax-comment-path"></div> 
   <div id="pjax-comment-placeholder"></div> 
@@ -432,74 +434,664 @@
         
         
 
-
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
+
+
+
+
+  
+  <div class="article-meta" id="top">
     
-      
-  <section class="post-list">
     
-      
+    
+      <h1 class="title">
+        操作系统复习
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0.1/assets/svg/1f937.svg">
+    <p>小管</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E5%A4%8D%E4%B9%A0/">复习</a>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Dec 16, 2020</p>
+  </a>
+</div>
+
+          
         
           
         
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
       
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/09/12/Java-learning-route/">
-        Java学习路线
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>大二下学期的课程基本结束了，由于种种原因，思考过后决定不考研了，所以就准备大学毕业找工作，以前也学习过Java，但总感觉一头雾水，没有明确的目标，所以就简单整理Java的学习路线。</p>
-    
+      <div id="lc-pv" data-title="操作系统复习" data-path="/2020/12/16/OS-Review/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
   </div>
+
+
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>1.8k words</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>6 min</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+<div class="new-meta-item comments-count">
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-09-12</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Java/">Java</a>
+  <a href="/2020/12/16/OS-Review/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/2020/12/16/OS-Review/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <h2 id="基本定义"><a href="#基本定义" class="headerlink" title="基本定义"></a>基本定义</h2><ol>
+<li>并发：是指两个或多个事件在同一时间间隔内发生。</li>
+<li>并行：是指两个或多个事件在同一时刻发生。</li>
+<li>并发条件：读集与写集是空集、写集和写集是空集。</li>
+<li>共享性：是指计算机系统中的各种硬、软件资源都可以为多个用户同时使用。</li>
+<li>虚拟性：一方面指把物理上的一个实体变成逻辑上的多个对应物，另一方面指虚拟出来的对应物只不过是用户主观上的一种错觉。</li>
+<li>进程特性：动态性、并发性、独立性、异步性、结构特性。</li>
+<li>进程与程序的区别：<ul>
+<li>从定义上看，进程是程序处理数据的过程，而程序是一组指令的有序集合；</li>
+<li>进程具有动态性、并发性、独立性和异步性等，而程序不具有这些特性；</li>
+<li>从进程结构特性来看，他包含程序（以及数据和PCB）；</li>
+<li>进程和程序并非一一对应；</li>
+</ul>
+</li>
+<li>临界区：进程中访问临界资源的那段程序代码成为临界区或临界段。</li>
+<li>信号量基本物理含义：当信号量值大于零时表示系统中某类资源的数目；当信号量值小于零时，其绝对值为系统中因请求该类资源而被阻塞的进程数目。</li>
+<li>信号量的值的意义：<ul>
+<li>正数：资源数；</li>
+<li>负数：等待资源进程数；</li>
+</ul>
+</li>
+<li>同步、互斥的区别：进程互斥是让各个进程竞争共享资源，资源的使用是各自独立的，相互之间无必然联系；进程同步时并发进程对共享资源的使用必须按照某种逻辑顺序来进行。</li>
+<li>物理地址：内存单元的地址编号，又称绝对地址或实地址。</li>
+<li>逻辑地址：用户程序中使用的地址，又称相对地址或虚地址。</li>
+<li>静态重定位：在程序执行过程之前由装入程序完成的重定位过程。</li>
+<li>动态重定位：在程序执行过程中，由硬件地址变换机构实现重定位的过程。</li>
+<li>虚拟内存：一种利用虚拟储存器来逻辑扩充物理内存的技术。</li>
+<li>快表：一组相关联寄存器，具有并行能力。用来存在当前最长访问的那些页面的页表目内容。</li>
+<li>二级页表：为节约内存，氛围二级页表结构。第一级用１ｋ个表相，每项４个字节，占４KB内存；第二级再用１０位，这样二级表组合起来即可达到１MB个表项。</li>
+<li>中断：是指计算机在执行期间，系统内发生了某一急需处理的事件，使得CPU暂时终止当前正在执行的程序而转区执行相应的事件处理程序，待处理完毕后再返回导刚才暂停程序的被中断处继续执行。</li>
+<li>I/O通道：是指专门用于负责输入/输出工作的处理机，是大型机必备的为CPU减负的设备。</li>
+<li>缓冲技术：在CPU和外设之间设立缓冲区，用以暂存CPU和外设之间交换的数据，从而缓和CPU和外设速度不匹配所产生的矛盾。</li>
+<li>I/O控制方式：秩序直接控制方式、中断控制方式、DMA控制方式、通道控制方式。</li>
+<li>文件物理结构：从系统角度看到的文件信息的组织形式。</li>
+</ol>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><h3 id="银行家算法"><a href="#银行家算法" class="headerlink" title="银行家算法"></a>银行家算法</h3><p>假定系统中有五个进程{P0、P1、P2、P3、P4}和三类资源{A、B、C}，各种资源的数量分别是10、5、7，在T0时刻的资源分配情况如下图所示：</p>
+<p><img src="https://oss.gleaming.cn/Blog/OSReview/bank1.png" class="lazyload" data-srcset="https://oss.gleaming.cn/Blog/OSReview/bank1.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>1）判断在T0时刻的安全性。</p>
+<blockquote>
+<p>  MAX：进程所需的资源</p>
+<p>  Allocation：系统已经分配给进程的资源数</p>
+<p>  Need：进程还需要的资源数 <code>Need = MAX - Allocation</code></p>
+<p>  Available：系统剩余的资源数 <code>Available =Total - Allocation</code></p>
+</blockquote>
+<p><img src="https://oss.gleaming.cn/Blog/OSReview/bank2.png" class="lazyload" data-srcset="https://oss.gleaming.cn/Blog/OSReview/bank2.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<blockquote>
+<p>  Work：当前系统所剩资源</p>
+<p>  work+allocation：计算机处理完当前进程后所剩资源</p>
+</blockquote>
+<p>所以在T0时刻有安全序列{P1，P3，P4，P2，P0}，所以T0时刻是安全的。</p>
+<p>2）P1请求资源：P1发出请求向量Request（1，0，2），系统按照银行家算法进行检查。</p>
+<p><img src="https://oss.gleaming.cn/Blog/OSReview/bank3.png" class="lazyload" data-srcset="https://oss.gleaming.cn/Blog/OSReview/bank3.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>判断步骤：</p>
+<ol>
+<li> 先判断请求是否<strong>小于等于</strong>所需：Request（1，0，2）&lt;= Need(1，2，2)</li>
+<li> 判断请求的是否<strong>小于等于</strong>系统还剩的：Request（1，0，2）&lt;=Allocation（3，3，2）</li>
+<li> 根据请求资源量进行分配（更改表）</li>
+<li> 列表计算</li>
+</ol>
+<p>更改表：</p>
+<p><img src="https://oss.gleaming.cn/Blog/OSReview/bank4.png" class="lazyload" data-srcset="https://oss.gleaming.cn/Blog/OSReview/bank4.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>结果：</p>
+<p><img src="https://oss.gleaming.cn/Blog/OSReview/bank5.png" class="lazyload" data-srcset="https://oss.gleaming.cn/Blog/OSReview/bank5.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>所以P1可以请求成功。</p>
+<h3 id="页面置换算法"><a href="#页面置换算法" class="headerlink" title="页面置换算法"></a>页面置换算法</h3><p>缺页：当前物理页面中不存在的页面</p>
+<p>缺页次数：出现缺页的次数</p>
+<p>缺页率：缺页次数/总页数</p>
+<h4 id="先进先出算法-FIFO"><a href="#先进先出算法-FIFO" class="headerlink" title="先进先出算法 FIFO"></a>先进先出算法 FIFO</h4><ul>
+<li>  置换最先调入内存的页面，即置换在内存中驻留时间最久的页面。</li>
+<li>  按照进入内存的先后次序排列成<strong>队列</strong>，从队尾进入，从队首删除。但是该算法会淘汰经常访问的页面，不适应进程实际运行的规律，目前已经<strong>很少使用</strong>。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>P</th>
+<th>2</th>
+<th>3</th>
+<th>2</th>
+<th>1</th>
+<th>5</th>
+<th>2</th>
+<th>4</th>
+<th>5</th>
+<th>3</th>
+<th>2</th>
+<th>5</th>
+<th>2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>1</td>
+<td></td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr>
+<td>F=9</td>
+<td>Y</td>
+<td>Y</td>
+<td></td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td></td>
+<td>Y</td>
+<td></td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody></table>
+<p>缺页率：9/12*100%=75%</p>
+<h4 id="最佳置换算法-OPT"><a href="#最佳置换算法-OPT" class="headerlink" title="最佳置换算法 OPT"></a>最佳置换算法 OPT</h4><ul>
+<li>  被淘汰的页面将是在未来最长的时间内不再被访问的页面</li>
+<li>  缺页中断率最低，但是该算法需要依据以后各业的使用情况，而当一个进程还未运行完成是，很难估计哪一个页面是以后不再使用或在最长时间以后才会用到的页面。所以<strong>该算法是不能实现的</strong>。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>P:</th>
+<th>2</th>
+<th>3</th>
+<th>2</th>
+<th>1</th>
+<th>5</th>
+<th>2</th>
+<th>4</th>
+<th>5</th>
+<th>3</th>
+<th>2</th>
+<th>5</th>
+<th>2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>M=3</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>F=6</td>
+<td>Y</td>
+<td>Y</td>
+<td></td>
+<td>Y</td>
+<td>Y</td>
+<td></td>
+<td>Y</td>
+<td></td>
+<td></td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>缺页率：6/12*100%=50%</p>
+<h4 id="最近最少使用算法LRU"><a href="#最近最少使用算法LRU" class="headerlink" title="最近最少使用算法LRU"></a>最近最少使用算法LRU</h4><ul>
+<li>置换最近一段时间以来最长时间未访问过的页面</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>P</th>
+<th>2</th>
+<th align="left">3</th>
+<th>2</th>
+<th>1</th>
+<th>5</th>
+<th>2</th>
+<th>4</th>
+<th>5</th>
+<th>3</th>
+<th>2</th>
+<th>5</th>
+<th>2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>2</td>
+<td align="left">2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>1</td>
+<td></td>
+<td align="left">3</td>
+<td>3</td>
+<td>3</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td align="left"></td>
+<td></td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>F=7</td>
+<td>Y</td>
+<td align="left">Y</td>
+<td></td>
+<td>Y</td>
+<td>Y</td>
+<td></td>
+<td>Y</td>
+<td></td>
+<td>Y</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>缺页率：7/12*100%=58.3%</p>
+<h3 id="计算物理地址"><a href="#计算物理地址" class="headerlink" title="计算物理地址"></a>计算物理地址</h3><p>在采用页式存储管理的系统中，某进程的逻辑地址空间为4页（<strong>每页2048字节</strong>），已知该进程的页面映像表（页表）如下：</p>
+<table>
+<thead>
+<tr>
+<th>页号</th>
+<th>块号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>2</td>
+<td>6</td>
+</tr>
+<tr>
+<td>3</td>
+<td>8</td>
+</tr>
+</tbody></table>
+<p>计算有效逻辑地址4865所对应的物理地址。</p>
+<p><code>地址转换：绝对地址=块号×块长+块内地址</code></p>
+<p><strong>求页号</strong>： d = 4865%2048=2……769</p>
+<p><strong>对页表</strong>：找到块号 6 </p>
+<p><strong>算地址</strong>：物理地址=6*2048+769=13057</p>
+<p>未完待续。。。。。</p>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2020/09/12/Java-learning-route/'>
-            Read More
-          </a>
+      
+      
+	  <iframe src="https://oss.gleaming.cn/donate/simple/index.html" style="overflow-x:hidden;overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;"  frameborder="0" scrolling="no"></iframe>
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=https://gleaming.cn/2020/12/16/OS-Review/>https://gleaming.cn/2020/12/16/OS-Review/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-12-16T21:22:46+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Dec 16, 2020</p>
+  </a>
 </div>
 
-          </div>
         
       
-    
-  </section>
+        
+          
   
-    
-  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/OS/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>OS</p></a></div>
 
 
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gleaming.cn/2020/12/16/OS-Review/&title=操作系统复习 - 小管的blog&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://gleaming.cn/2020/12/16/OS-Review/&title=操作系统复习 - 小管的blog&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://gleaming.cn/2020/12/16/OS-Review/&title=操作系统复习 - 小管的blog&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
   
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2020/12/09/AI-Review-outline/'>
+          <p class='title'>人工智能复习提纲<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>第一章1. 什么是人工智能 点击查看答案
+所谓人工智能就是用人工的方法在机器（计算机）上实现的智能，也称为机器智能。
+
+
+2. 人工智能研究的基本内容有那些？ 点击查看答案
+1. 知识表示
+2....</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+  <script>
+  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.0/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    // 文章章节标题不能为 “MathJax” ，否则会报错。
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -507,146 +1099,28 @@
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">小管的blog</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="mailto:glmeaing_g@icloud.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/gleam-G"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://www.zhihu.com/people/suresi-guan"
-              class="social fab fa-zhihu flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://music.163.com/#/user/home?id=325910736"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-  
-
-  <section class="widget category shadow desktop">
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/Java/" href="/categories/Java/"
-            id="categoriesJava"
-            ><div class='name'>Java</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%A4%8D%E4%B9%A0/" href="/categories/%E5%A4%8D%E4%B9%A0/"
-            id="categoriesE5A48DE4B9A0"
-            ><div class='name'>复习</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E7%AE%97%E6%B3%95/" href="/categories/%E7%AE%97%E6%B3%95/"
-            id="categoriesE7AE97E6B395"
-            ><div class='name'>算法</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/" href="/categories/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/"
-            id="categoriesE7AE97E6B395E68E92E5BA8F"
-            ><div class='name'>排序</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E5%AD%A6/" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E5%AD%A6/"
-            id="categoriesE7AE97E6B395E695B0E5ADA6"
-            ><div class='name'>数学</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%AE%9A%E4%B9%89"><span class="toc-text">基本定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95"><span class="toc-text">算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95"><span class="toc-text">银行家算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95"><span class="toc-text">页面置换算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%88%E8%BF%9B%E5%85%88%E5%87%BA%E7%AE%97%E6%B3%95-FIFO"><span class="toc-text">先进先出算法 FIFO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E4%BD%B3%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95-OPT"><span class="toc-text">最佳置换算法 OPT</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E8%BF%91%E6%9C%80%E5%B0%91%E4%BD%BF%E7%94%A8%E7%AE%97%E6%B3%95LRU"><span class="toc-text">最近最少使用算法LRU</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80"><span class="toc-text">计算物理地址</span></a></li></ol></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/AI/" style="font-size: 14px; color: #999">AI</a> <a href="/tags/Java/" style="font-size: 14px; color: #999">Java</a> <a href="/tags/OS/" style="font-size: 14px; color: #999">OS</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 14px; color: #999">学习</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 14px; color: #999">排序</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 14px; color: #999">数学</a>
-    </div>
-  </section>
-
-
-  
 
   
 
 
 </aside>
+
 
 
       </div>
