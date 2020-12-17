@@ -507,13 +507,13 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>1.8k words</p>
+      <p>2.7k words</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>6 min</p>
+      <p>10 min</p>
     </a>
   </div>
 
@@ -888,7 +888,247 @@
 <p><strong>求页号</strong>： d = 4865%2048=2……769</p>
 <p><strong>对页表</strong>：找到块号 6 </p>
 <p><strong>算地址</strong>：物理地址=6*2048+769=13057</p>
-<p>未完待续。。。。。</p>
+<h3 id="磁盘调度"><a href="#磁盘调度" class="headerlink" title="磁盘调度"></a>磁盘调度</h3><p>一个磁盘驱动器有<strong>150个柱面</strong>，考虑一个磁盘序列，它按照到达时间顺序分别是<strong>35、52、37、17、80、120、135、104</strong>，如果读写磁头<strong>最初位于柱面90</strong>，请使用FCFS、SSTF、SCAN、CSCAN算法求总寻道长度和平均寻道长度。</p>
+<h4 id="先来先服务算法-FCFS"><a href="#先来先服务算法-FCFS" class="headerlink" title="先来先服务算法 FCFS"></a>先来先服务算法 FCFS</h4><p>磁头移动顺序：</p>
+<p>​    90 -&gt; 35 -&gt; 52 -&gt; 37 -&gt; 17 -&gt; 80 -&gt; 120 -&gt; 135 -&gt; 104</p>
+<p> 总寻道长度 = (90-35) + (52-35) + (52-37) + (37-17) + (80-17) + (120-80) + (135-120) + (135-104) = 256</p>
+<p> 平均寻道长度 = 总长/移动次数 = 256/8 = 32;</p>
+<h4 id="最短寻道时间优先-SSTF"><a href="#最短寻道时间优先-SSTF" class="headerlink" title="最短寻道时间优先 SSTF"></a>最短寻道时间优先 SSTF</h4><p>先把磁盘序列的时间按照从小到大的顺序排列，磁头从开始柱面移动到距离开始柱面<strong>最近的柱面</strong>，然后从这个柱面移动到到离这个柱面<strong>最近的柱面</strong>，以此类推，直到访问所有的柱面。</p>
+<p>17  35  37  52  80  <strong>90</strong>  104  120  135</p>
+<p>17  35  37  52  <strong>80</strong>  <del>90</del>  104  120  135</p>
+<p>17  35  37  52  <del>80</del>  <del>90</del>  <strong>104</strong>  120  135</p>
+<p>17  35  37  52  <del>80</del>  <del>90</del>  <del>104</del>  <strong>120</strong>  135</p>
+<p>17  35  37  52  <del>80</del>  <del>90</del>  <del>104</del>  <del>120</del>  <strong>135</strong></p>
+<p>17  35  37  <strong>52</strong>  <del>80</del>  <del>90</del>  <del>104</del>  <del>120</del>  <del>135</del></p>
+<p>17  35  <strong>37</strong>  <del>52</del>  <del>80</del>  <del>90</del>  <del>104</del>  <del>120</del>  <del>135</del></p>
+<p>17  <strong>35</strong>  <del>37</del>  <del>52</del>  <del>80</del>  <del>90</del>  <del>104</del>  <del>120</del>  <del>135</del></p>
+<p><strong>17</strong>  <del>35</del>  <del>37</del>  <del>52</del>  <del>80</del>  <del>90</del>  <del>104</del>  <del>120</del>  <del>135</del></p>
+<p>磁头移动顺序：</p>
+<p>​    90 -&gt; 80 -&gt; 104 -&gt; 120 -&gt; 135 -&gt; 52 -&gt; 37 -&gt; 35 -&gt; 17</p>
+<h4 id="扫描算法-SCAN"><a href="#扫描算法-SCAN" class="headerlink" title="扫描算法 SCAN"></a>扫描算法 SCAN</h4><p>17  35  37  52  80  <strong>90</strong>  104  120  135</p>
+<p>磁头从初始柱面向左（右）扫描，一直到头，然后向右（左）扫描。</p>
+<p>磁头移动顺序：</p>
+<p>向左：90 -&gt; 80 -&gt; 52 -&gt; 37 -&gt; 35 -&gt; 17 -&gt; 104 -&gt; 120 -&gt; 135</p>
+<p>向右：90 -&gt; 104 -&gt; 120 -&gt; 135 -&gt; 80 -&gt; 52 -&gt; 37 -&gt; 35 -&gt; 17</p>
+<h4 id="循环扫描算法-C-SCAN"><a href="#循环扫描算法-C-SCAN" class="headerlink" title="循环扫描算法 C-SCAN"></a>循环扫描算法 C-SCAN</h4><p>17  35  37  52  80  <strong>90</strong>  104  120  135</p>
+<p>磁头移动顺序：</p>
+<p>向左：90 -&gt; 80 -&gt; 52 -&gt; 37 -&gt; 35 -&gt; 17 -&gt; 135 -&gt; 120 -&gt; 104</p>
+<p>向右：90 -&gt; 104 -&gt; 120 -&gt; 135 -&gt; 17 -&gt; 35 -&gt; 37 -&gt; 52 -&gt; 80</p>
+<p>向左（右）到头，然后因为是圆形有150个柱面，所以直接转了一圈，计算总寻道长度的时候注意</p>
+<h3 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h3><p>从P1到P4有四个进程，每个进程的到达时间和运行时间如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>进程</th>
+<th>到达时间</th>
+<th>执行时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>P1</td>
+<td>0</td>
+<td>8</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>2</td>
+<td>9</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>3</td>
+<td>5</td>
+</tr>
+</tbody></table>
+<p>求FCFS和SJF的平均等待时间、平均周转时间和平均带权周转时间。</p>
+<h4 id="先来先服务算法-FCFS-1"><a href="#先来先服务算法-FCFS-1" class="headerlink" title="先来先服务算法 FCFS"></a>先来先服务算法 FCFS</h4><p>按照进程到达的先后次序 ：</p>
+<p>​    P1 -&gt; P2 -&gt; P3 -&gt; P4 </p>
+<table>
+<thead>
+<tr>
+<th align="center">进程</th>
+<th align="center">到达时间</th>
+<th align="center">执行时间</th>
+<th align="center">开始时间</th>
+<th align="center">结束时间</th>
+<th align="center">等待时间</th>
+<th align="center">周转时间</th>
+<th align="center">带权周转时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">P1</td>
+<td align="center">0</td>
+<td align="center">8</td>
+<td align="center">0</td>
+<td align="center">8</td>
+<td align="center">0</td>
+<td align="center">8</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">P2</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">8</td>
+<td align="center">12</td>
+<td align="center">7</td>
+<td align="center">11</td>
+<td align="center">2.75</td>
+</tr>
+<tr>
+<td align="center">P3</td>
+<td align="center">2</td>
+<td align="center">9</td>
+<td align="center">12</td>
+<td align="center">21</td>
+<td align="center">10</td>
+<td align="center">19</td>
+<td align="center">2.11</td>
+</tr>
+<tr>
+<td align="center">P4</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">21</td>
+<td align="center">26</td>
+<td align="center">18</td>
+<td align="center">23</td>
+<td align="center">4.6</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>  等待时间 = 开始时间 - 到达时间</p>
+<p>  周转时间 = 结束时间 - 到达时间</p>
+<p>  带权周转时间 = 周转时间/执行时间</p>
+<p>  平均等待时间 = 等待时间/进程数</p>
+<p>  平均周转时间 = 周转时间/进程数</p>
+<p>  平均带权周转时间 = 带权周转时间/进程数</p>
+</blockquote>
+<h4 id="短作业优先调度算法-SJF"><a href="#短作业优先调度算法-SJF" class="headerlink" title="短作业优先调度算法 SJF"></a>短作业优先调度算法 SJF</h4><p>按照进程的长短，进程越短越优先 </p>
+<ul>
+<li>  非抢占</li>
+</ul>
+<p>P1 -&gt; P2 -&gt; P4 -&gt; P3</p>
+<table>
+<thead>
+<tr>
+<th align="center">进程</th>
+<th align="center">到达时间</th>
+<th align="center">执行时间</th>
+<th align="center">开始时间</th>
+<th align="center">结束时间</th>
+<th align="center">等待时间</th>
+<th align="center">周转时间</th>
+<th align="center">带权周转时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">P1</td>
+<td align="center">0</td>
+<td align="center">8</td>
+<td align="center">0</td>
+<td align="center">8</td>
+<td align="center">0</td>
+<td align="center">8</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">P2</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">8</td>
+<td align="center">12</td>
+<td align="center">7</td>
+<td align="center">11</td>
+<td align="center">2.75</td>
+</tr>
+<tr>
+<td align="center">P4</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">12</td>
+<td align="center">17</td>
+<td align="center">9</td>
+<td align="center">14</td>
+<td align="center">2.8</td>
+</tr>
+<tr>
+<td align="center">P3</td>
+<td align="center">2</td>
+<td align="center">9</td>
+<td align="center">17</td>
+<td align="center">26</td>
+<td align="center">15</td>
+<td align="center">24</td>
+<td align="center">2.66</td>
+</tr>
+</tbody></table>
+<p><img src="https://oss.gleaming.cn/Blog/OSReview/process1.png" class="lazyload" data-srcset="https://oss.gleaming.cn/Blog/OSReview/process1.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<ul>
+<li>  抢占</li>
+</ul>
+<p>P1 -&gt; P2 -&gt; P4 -&gt; P1 -&gt; P3</p>
+<table>
+<thead>
+<tr>
+<th align="center">进程</th>
+<th align="center">到达时间</th>
+<th align="center">执行时间</th>
+<th align="center">开始时间</th>
+<th align="center">结束时间</th>
+<th align="center">等待时间</th>
+<th align="center">周转时间</th>
+<th align="center">带权周转时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">P1</td>
+<td align="center">0</td>
+<td align="center">8/7</td>
+<td align="center">0/10</td>
+<td align="center">1/17</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">P2</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">P3</td>
+<td align="center">2</td>
+<td align="center">9</td>
+<td align="center">17</td>
+<td align="center">26</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">P4</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">10</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p><img src="https://oss.gleaming.cn/Blog/OSReview/process2.png" class="lazyload" data-srcset="https://oss.gleaming.cn/Blog/OSReview/process2.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
 
   
   
@@ -926,10 +1166,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-12-16T21:22:46+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-12-17T10:11:14+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Dec 16, 2020</p>
+    <p>更新于：Dec 17, 2020</p>
   </a>
 </div>
 
@@ -1111,7 +1351,7 @@
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%AE%9A%E4%B9%89"><span class="toc-text">基本定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95"><span class="toc-text">算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95"><span class="toc-text">银行家算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95"><span class="toc-text">页面置换算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%88%E8%BF%9B%E5%85%88%E5%87%BA%E7%AE%97%E6%B3%95-FIFO"><span class="toc-text">先进先出算法 FIFO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E4%BD%B3%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95-OPT"><span class="toc-text">最佳置换算法 OPT</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E8%BF%91%E6%9C%80%E5%B0%91%E4%BD%BF%E7%94%A8%E7%AE%97%E6%B3%95LRU"><span class="toc-text">最近最少使用算法LRU</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80"><span class="toc-text">计算物理地址</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%AE%9A%E4%B9%89"><span class="toc-text">基本定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95"><span class="toc-text">算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95"><span class="toc-text">银行家算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95"><span class="toc-text">页面置换算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%88%E8%BF%9B%E5%85%88%E5%87%BA%E7%AE%97%E6%B3%95-FIFO"><span class="toc-text">先进先出算法 FIFO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E4%BD%B3%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95-OPT"><span class="toc-text">最佳置换算法 OPT</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E8%BF%91%E6%9C%80%E5%B0%91%E4%BD%BF%E7%94%A8%E7%AE%97%E6%B3%95LRU"><span class="toc-text">最近最少使用算法LRU</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80"><span class="toc-text">计算物理地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6"><span class="toc-text">磁盘调度</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%88%E6%9D%A5%E5%85%88%E6%9C%8D%E5%8A%A1%E7%AE%97%E6%B3%95-FCFS"><span class="toc-text">先来先服务算法 FCFS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E7%9F%AD%E5%AF%BB%E9%81%93%E6%97%B6%E9%97%B4%E4%BC%98%E5%85%88-SSTF"><span class="toc-text">最短寻道时间优先 SSTF</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%AB%E6%8F%8F%E7%AE%97%E6%B3%95-SCAN"><span class="toc-text">扫描算法 SCAN</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E6%89%AB%E6%8F%8F%E7%AE%97%E6%B3%95-C-SCAN"><span class="toc-text">循环扫描算法 C-SCAN</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="toc-text">进程调度</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%88%E6%9D%A5%E5%85%88%E6%9C%8D%E5%8A%A1%E7%AE%97%E6%B3%95-FCFS-1"><span class="toc-text">先来先服务算法 FCFS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9F%AD%E4%BD%9C%E4%B8%9A%E4%BC%98%E5%85%88%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95-SJF"><span class="toc-text">短作业优先调度算法 SJF</span></a></li></ol></li></ol></li></ol>
     </div>
   </section>
 
