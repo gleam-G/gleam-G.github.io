@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>JVM新生代为什么需要两个Survivor空间</title>
+      <link href="2021/02/13/Why-two-survivor-spaces/"/>
+      <url>2021/02/13/Why-two-survivor-spaces/</url>
+      
+        <content type="html"><![CDATA[<p>我们知道，目前主流的虚拟机实现都采用了分代收集的思想，把整个堆区划分为新生代和老年代；新生代又被划分成 Eden 空间、 From Survivor 和 To Survivor 三块区域。 </p><p>那么问题就来了，为什么必须是两个Survivor空间呢？其实要回答这个问题，我们首先要知道为什么需要Survivor空间？为什么不是一个Survivor空间？</p><h3 id="为什么不是0个Survivor空间？"><a href="#为什么不是0个Survivor空间？" class="headerlink" title="为什么不是0个Survivor空间？"></a>为什么不是0个Survivor空间？</h3><p>这个问题其实等价于：为什么需要Survivor空间。如果没有Survivor空间，垃圾回收过程为：一遍新生代GC后，所有活着的对象全部进入老年代，即使它在接下来的几次GC过程中极有可能会被回收掉。这样的话老年代会很快被填满，Full GC 的频率被大大提高。老年代一般比新生代大很多，对它进行垃圾回收会消耗比较长的时间；如果收集的频率又很快的话，那就大大降低了效率。基于这种考虑，虚拟机引入了幸存区的概念。如果对象在某次新生代GC后仍然存活，让它暂时进入幸存区；以后每熬过一次GC，就让对象的年龄加一，知道年龄达到某个设定的值(比如15)，JVM才会将它转入老年代。</p><p>总之，设置Survivor空间的目的是让那些中等寿命尽量在Minor GC时被干掉，最终在总体上减少垃圾回收对用户产生的影响。</p><h3 id="为什么不是1个Survivor空间？"><a href="#为什么不是1个Survivor空间？" class="headerlink" title="为什么不是1个Survivor空间？"></a>为什么不是1个Survivor空间？</h3><p>回答这个问题一般有一个前提，就是新生代一般哦度再用复制算法进行垃圾回收。原始的复制算法是把一块内存分成两个部分，GC时把存活的对象从一块空间(From space)复制到另一块空间(To space)，再把原来的内存(From space)清理干净，最后调换From space和To space的逻辑角色。</p><p>在 HotSpot 虚拟机里， Eden 空间和 Survivor 空间默认的比例是 8:1 。我们来看看在只有一个 Survivor 空间的情况下，这个 8:1 会有什么问题。此处为了方便说明，我们假设新生代一共为 9 MB 。对象优先在 Eden 区分配，当 Eden 空间满 8 MB 时，触发第一次 Minor GC 。比如说有 0.5 MB的对象存活，那这 0.5 MB 的对象将由 Eden 区向 Survivor 区复制。这次 Minor GC 过后， Eden 区被清理干净， Survivor 区被占用了 0.5 MB ，还剩 0.5 MB 。到这里一切都很美好，但问题马上就来了：从现在开始所有对象将会在这剩下的 0.5 MB 的空间上被分配，很快就会发现空间不足，于是只好触发下一次 Minor GC 。可以看出在这种情况下，当 Survivor 空间作为对象“出生地”的时候，很容易触发 Minor GC ，这种 8:1 的不对称分配不但没能在总体上降低 Minor GC 的频率，还会把 gc 的时间间隔搞得很不平均。把 Eden : Survivor 设成 1 : 1 也一样，每当对象总大小满 5 MB 的时候都必须触发一次 Minor GC ，唯一的变化是 gc 的时间间隔相对平均了。 </p><h3 id="为什么2个-Survivor-空间可以达到要求？"><a href="#为什么2个-Survivor-空间可以达到要求？" class="headerlink" title="为什么2个 Survivor 空间可以达到要求？"></a>为什么2个 Survivor 空间可以达到要求？</h3><p>问题很清楚了，无论 Eden 和 Survivor 的比例怎么设置，在只有一个 Survivor 的情况下，总体上看在新生代空间满一半的时候就会触发一次 Minor GC 。那有没有提升的空间呢？比如说永远在新生代空间满 80% 的时候才触发 Minor GC ？ </p><p>事实上是可以做到的：我们可以设两个 Survivor 空间（ From Survivor 和 To Survivor ）。比如，我们把 Eden : From Survivor : To Survivor 空间大小设成 8 : 1 : 1 ，对象总是在 Eden 区出生， From Survivor 保存当前的幸存对象， To Survivor 为空。一次 gc发生后： </p><ul><li>Eden 区活着的对象 ＋ From Survivor 存储的对象被复制到 To Survivor ； </li><li> 清空 Eden 和 From Survivor ； </li><li> 颠倒 From Survivor 和 To Survivor 的逻辑关系： From 变 To ， To 变 From 。 </li></ul><p>可以看出，只有在 Eden 空间快满的时候才会触发 Minor GC 。而 Eden 空间占新生代的绝大部分，所以 Minor GC 的频率得以降低。当然，使用两个 Survivor 这种方式我们也付出了一定的代价，如 10% 的空间浪费、复制对象的开销等。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> JVM </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JVM </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java内存区域探究</title>
       <link href="2021/01/12/Research-on-JAVA-memory-area/"/>
       <url>2021/01/12/Research-on-JAVA-memory-area/</url>
